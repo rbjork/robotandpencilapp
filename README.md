@@ -15,9 +15,9 @@ of some type.
 	     b.	The design pattern(s) adopted and implemented for Comment to be leveraged, minimizing code
           duplication, to allow other objects (e.g. a new class called Annotation ) to be saved similarly.  
 
-		Key to our interest in this problem are the Android design patterns and language features that you would
-    use to accomplish these two goals efficiently and cleanly, maximizing Object Oriented reusability and
-    flexibility while avoiding over­ designed code.  
+		Key to our interest in this problem are the Android design patterns and language features that
+    you would use to accomplish these two goals efficiently and cleanly, maximizing Object Oriented
+    reusability and flexibility while avoiding over­ designed code.  
 
 	2.	Make any assumptions you would like, just make sure that you clearly state those assumptions.
       For example, don’t worry about the low level details like networking code or asynchrony, focus
