@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RobotAndPencilApp</string>
+    <string name="save">save</string>
+    <string name="load">load</string>
+</resources>

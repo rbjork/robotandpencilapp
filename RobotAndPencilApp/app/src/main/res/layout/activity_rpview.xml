@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:weightSum="2"
+    tools:context="com.robotandpencils.robotandpencilapp.RPViewActivity">
+    <com.robotandpencils.robotandpencilapp.views.RPView
+        android:id="@+id/rpview"
+        android:background="@color/colorTextBackground"
+        android:textAlignment="viewStart"
+        android:inputType="textMultiLine"
+        android:gravity="top|left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="450px"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <com.robotandpencils.robotandpencilapp.views.RPCommentsList
+        android:id="@+id/rpcommentlist"
+        android:background="@color/colorCommentBackground"
+        android:layout_width="match_parent"
+        android:layout_height="250px"
+        android:layout_marginBottom="150px"
+        android:layout_alignParentBottom="true"/>
+
+    <Button android:id="@+id/saveButton"
+        android:text="@string/save"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:onClick="saveClick"
+
+        android:layout_alignParentBottom="true"
+        />
+
+    <Button
+        android:id="@+id/loadButton"
+        android:text="@string/load"
+
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="loadClick"
+
+        android:layout_toEndOf="@+id/saveButton"
+         />
+
+
+
+
+</RelativeLayout>
