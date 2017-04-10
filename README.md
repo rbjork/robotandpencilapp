@@ -39,4 +39,6 @@ The somewhat ambiguous part of the test is what assumptions can be made about th
 
 To make the client independent of changes to comment or annotation we will make use of interfaces  For each kind of object that we might want to store we will have a helper class, all of which will implement a common interface specifying methods to support serializing and de-serialing the object( we won’t assume the data classes themselves support this directly or the interface the helper classes implements).
 
+This app will compile, install and launch.  But it isn't actually functional since no backend is connected and the view does not support creation or rendering of comments or annotations.  The code here simply demostrates how the spec can be implemented.  To make this fully functional would require more than the couple hours expected to be used for this assignment.
+
 Ron
