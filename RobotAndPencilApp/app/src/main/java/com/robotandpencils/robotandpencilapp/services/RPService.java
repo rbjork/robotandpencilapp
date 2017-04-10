@@ -68,46 +68,42 @@ public class RPService extends IntentService {
         String password = preferences.getString(PASSWORD,"RPAPP"); // froom user preference local store
         String projectname = data.getString(PROJECTNAME);
 
-        ArrayList<Comment> comments = Model.getInstance().getComments();
-        ArrayList<Annotation> annotations = Model.getInstance().getAnnotations();
+        JSONArray dataJSON = new JSONArray();
         HelperComment helperComment = new HelperComment();
         HelperAnnotation helperAnnotation = new HelperAnnotation();
 
-        JSONArray dataJSON = new JSONArray();
-        for(Annotation a : annotations){
-            JSONObject ann = helperAnnotation.serialize(a);
-            try {
-                ann.put(TYPE, ANNOTATION_TYPE);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            dataJSON.put(ann);
-        }
-        for(Comment c : comments){
-            JSONObject comment = helperComment.serialize(c);
-            try {
-                comment.put(TYPE, COMMENT_TYPE);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            dataJSON.put(comment);
-        }
-
         if(action.equals(SAVE_ACTION)) {
-            try {
-                JSONObject datajson = new JSONObject(data.getString(DATA));
-                JSONArray dataitems = datajson.getJSONArray(ITEMS);
-                for (int i = 0; i < dataitems.length(); i++) {
-                    try {
-                        JSONObject dataitem = (JSONObject) dataitems.get(i);
-                        remoteService.save(accountName, password, projectname, dataitem.toString()); //  Synchronous call
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+
+            ArrayList<Comment> comments = Model.getInstance().getComments();
+            ArrayList<Annotation> annotations = Model.getInstance().getAnnotations();
+            
+            for(Annotation a : annotations){
+                JSONObject ann = helperAnnotation.serialize(a);
+                try {
+                    ann.put(TYPE, ANNOTATION_TYPE);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
+                dataJSON.put(ann);
             }
+            for(Comment c : comments){
+                JSONObject comment = helperComment.serialize(c);
+                try {
+                    comment.put(TYPE, COMMENT_TYPE);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                dataJSON.put(comment);
+            }
+            for (int i = 0; i < dataJSON.length(); i++) {
+                try {
+                    JSONObject dataitem = (JSONObject) dataJSON.get(i);
+                    remoteService.save(accountName, password, projectname, dataitem.toString()); //  Synchronous call
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }else if(action.equals(LOAD_ACTION)){
             String loaddata = remoteService.retrieve(accountName,password,projectname);
             try {

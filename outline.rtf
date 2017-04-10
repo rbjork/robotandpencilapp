@@ -1,10 +1,71 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf460
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;\f2\froman\fcharset0 Times-Roman;
+}
 {\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{lower-latin\}.}{\leveltext\leveltemplateid2\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
 \margl1440\margr1440\vieww18220\viewh16280\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\b\fs24 \cf0 Robots and Pencils:\
+\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\f1\b0\fs26 \cf0 \expnd0\expndtw0\kerning0
+Instructions\uc0\u8232 Let\'92s say say you have instances of class 
+\b Comment 
+\b0 that need to get saved somehow, via a 
+\i Remote Store 
+\f2\i0\fs24 \
+
+\f1\fs26 of some type. 
+\f2\fs24 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\sa266\partightenfactor0
+\ls1\ilvl0
+\f1\fs26 \cf0 \kerning1\expnd0\expndtw0 {\listtext	1.	}\expnd0\expndtw0\kerning0
+Please provide draft code, pseudo\'adcode or a clear description that indicates how you would save these 
+\b Comment
+\f2\b0  
+\f1 objects to a 
+\i remote store
+\f2\i0  
+\f1 is such a fashion as to allow: \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl300\sa266\partightenfactor0
+\ls1\ilvl1\cf0 \kerning1\expnd0\expndtw0 {\listtext	a.	}\expnd0\expndtw0\kerning0
+The 
+\i Remote Store
+\f2\i0  
+\f1 to be changed at some unknown point in the future, for example, from Parse to a RESTful server, minimizing impact on the Android code \'ad particularly avoiding direct changes to the 
+\b Comment
+\f2\b0  
+\f1 class itself. (Don\'92t worry about the API interface to the datastore unless that is key to your solution.) \uc0\u8232 \
+\ls1\ilvl1\kerning1\expnd0\expndtw0 {\listtext	b.	}\expnd0\expndtw0\kerning0
+The design pattern(s) adopted and implemented for 
+\b Comment
+\f2\b0  
+\f1 to be leveraged, minimizing code duplication, to allow other objects (e.g. a new class called 
+\b Annotation
+\f2\b0  
+\f1 ) to be saved similarly. \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\sa266\partightenfactor0
+\ls1\ilvl0
+\i \cf0 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+Key to our interest in this problem are the Android design patterns and language features
+\f2\i0  
+\f1\i that you would use to accomplish these two goals efficiently and cleanly, maximizing Object Oriented reusability and flexibility while avoiding over\'ad designed code. 
+\i0 \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\sa266\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	2.	}\expnd0\expndtw0\kerning0
+Make any assumptions you would like, just make sure that you 
+\b clearly
+\f2\b0  
+\f1 state those assumptions. For example, don\'92t worry about the low level details like networking code or asynchrony, focus instead on the 
+\i patterns
+\f2\i0  
+\f1 that allow (a) and (b) to be accomplished. \uc0\u8232 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 \kerning1\expnd0\expndtw0 \
 \
 
 \b0 First impression: Since we have a collections of comments and annotations as well as other future types not foresee, the method for storage should handle multiple object types. Because of conversion times to amorphous strings and possible upload time, saving data should be done off the main UI thread. \
