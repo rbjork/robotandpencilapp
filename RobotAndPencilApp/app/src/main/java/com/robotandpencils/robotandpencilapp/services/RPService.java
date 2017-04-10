@@ -76,7 +76,7 @@ public class RPService extends IntentService {
 
             ArrayList<Comment> comments = Model.getInstance().getComments();
             ArrayList<Annotation> annotations = Model.getInstance().getAnnotations();
-            
+
             for(Annotation a : annotations){
                 JSONObject ann = helperAnnotation.serialize(a);
                 try {
@@ -112,6 +112,7 @@ public class RPService extends IntentService {
                 dataJSON = projectJSON.getJSONArray(DATA);
 
                 Model model = Model.getInstance();
+                model.clear();
                 for(int i=0;i<dataJSON.length();i++){
                     JSONObject jo = dataJSON.getJSONObject(i);
                     if(jo.getString(TYPE).equals(ANNOTATION_TYPE)) {

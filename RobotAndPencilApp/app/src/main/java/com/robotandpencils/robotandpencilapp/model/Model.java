@@ -30,10 +30,10 @@ public class Model {
         return annotations;
     }
 
-    public void addComment(Comment comment){
+    public synchronized void addComment(Comment comment){
         comments.add(comment);
     }
-    public void addAnnotation(Annotation annotation){
+    public synchronized void addAnnotation(Annotation annotation){
         annotations.add(annotation);
     }
 
