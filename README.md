@@ -19,7 +19,9 @@ of some type.
     use to accomplish these two goals efficiently and cleanly, maximizing Object Oriented reusability and
     flexibility while avoiding over­ designed code.  
 
-	2.	Make any assumptions you would like, just make sure that you clearly state those assumptions. For example, don’t worry about the low level details like networking code or asynchrony, focus instead on the patterns that allow (a) and (b) to be accomplished.  
+	2.	Make any assumptions you would like, just make sure that you clearly state those assumptions.
+      For example, don’t worry about the low level details like networking code or asynchrony, focus
+      instead on the patterns that allow (a) and (b) to be accomplished.  
 
 
 First impression: Since we have a collections of comments and annotations as well as other future types not foreseen, the method for storage should handle multiple object types. Because of conversion times to amorphous strings and possible upload time, saving data should be done off the main UI thread.
