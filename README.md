@@ -23,7 +23,7 @@ of some type.
       For example, don’t worry about the low level details like networking code or asynchrony, focus
       instead on the patterns that allow (a) and (b) to be accomplished.  
 
-![Alt text](/Screenshot.png?raw=true "See Screenshot : Screenshot.png")
+
 First impression: Since we have a collections of comments and annotations as well as other future types not foreseen, the method for storage should handle multiple object types. Because of conversion times to amorphous strings and possible upload time, saving data should be done off the main UI thread.
 
 There are four general approaches to perform saving outside the Activity UI thread.  They are: one, simply instantiate a runnable inside a Thread class instance;  two, use AsyncTask or Volley owned by the Activity with the UI that receives the user intention of saving;  or three, use a private Service;  or four, use a content provider to handle saving and retrieval.  
@@ -44,3 +44,5 @@ This app will compile, install and launch.  But it isn't actually functional sin
 Late additions include utilization of deserializing library fasterxml and google analytics for android.
 
 Ron
+
+![Alt text](/Screenshot.png?raw=true "See Screenshot : Screenshot.png")
