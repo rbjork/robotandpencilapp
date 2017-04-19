@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -116,9 +117,17 @@ public class RPService extends IntentService {
                 for(int i=0;i<dataJSON.length();i++){
                     JSONObject jo = dataJSON.getJSONObject(i);
                     if(jo.getString(TYPE).equals(ANNOTATION_TYPE)) {
-                        model.addAnnotation(helperAnnotation.deserialize(jo.toString()));
+                        try {
+                            model.addAnnotation(helperAnnotation.deserialize(jo.toString()));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }else if(jo.getString(TYPE).equals(COMMENT_TYPE)){
-                        model.addComment(helperComment.deserialize(jo.toString()));
+                        try {
+                            model.addComment(helperComment.deserialize(jo.toString()));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             } catch (JSONException e) {

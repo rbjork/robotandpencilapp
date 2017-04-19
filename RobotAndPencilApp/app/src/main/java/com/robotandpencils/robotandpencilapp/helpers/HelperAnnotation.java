@@ -3,12 +3,17 @@ package com.robotandpencils.robotandpencilapp.helpers;
 import android.view.View;
 import android.widget.EditText;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.robotandpencils.robotandpencilapp.model.Annotation;
 import com.robotandpencils.robotandpencilapp.views.RPView;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ronaldbjork on 4/8/17.
@@ -24,8 +29,13 @@ public class HelperAnnotation implements HelpersInterface {
     }
 
     @Override
-    public Annotation deserialize(String data) {
-        return null;
+    public Annotation deserialize(String data) throws IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        Annotation annotation = mapper.readValue(data, new TypeReference<Annotation>(){});
+
+        return annotation;
     }
 
     @Override

@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">RobotAndPencilApp</string>
+    <string name="app_name">Robot And Pencils</string>
     <string name="save">save</string>
     <string name="load">load</string>
+    <string name="save_project">Save Project</string>
+    <string name="load_project">Load Project</string>
+    <string name="code_challenge">Code Chanlleng</string>
+    <string name="cancel">Cancel</string>
 </resources>

@@ -7,6 +7,7 @@ import com.robotandpencils.robotandpencilapp.views.RPView;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 public interface HelpersInterface {
     JSONObject serialize(Object data);
-    Object deserialize(String data);
+    Object deserialize(String data) throws IOException;
     String getType();
     void renderToView(View v, ArrayList<Object> itms);
     //ArrayList<Object> getItems(View v);

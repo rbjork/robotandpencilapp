@@ -3,11 +3,16 @@ package com.robotandpencils.robotandpencilapp.helpers;
 import android.view.View;
 import android.widget.EditText;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.robotandpencils.robotandpencilapp.model.Annotation;
 import com.robotandpencils.robotandpencilapp.model.Comment;
 import com.robotandpencils.robotandpencilapp.views.RPView;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -22,8 +27,12 @@ public class HelperComment implements HelpersInterface {
     }
 
     @Override
-    public Comment deserialize(String data) {
-        return null;
+    public Comment deserialize(String data) throws IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        Comment comment = mapper.readValue(data, new TypeReference<Comment>(){});
+        return comment;
     }
 
 
