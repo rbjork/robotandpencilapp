@@ -1,0 +1,7 @@
+#Fri Apr 21 13:01:59 PDT 2017
+base.0=/Users/ronaldbjork/Documents/robotandpencilapp/RobotAndPencilApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_039e83292cfd7c048dcc3045a1fa3e24b8d7d5f0
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/ronaldbjork/Documents/robotandpencilapp/RobotAndPencilApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_8ae119a61f2330a161973290be3876e115fa3f51/classes.dex
+base.1=/Users/ronaldbjork/Documents/robotandpencilapp/RobotAndPencilApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_8ae119a61f2330a161973290be3876e115fa3f51
+file.0=/Users/ronaldbjork/Documents/robotandpencilapp/RobotAndPencilApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_039e83292cfd7c048dcc3045a1fa3e24b8d7d5f0/classes.dex

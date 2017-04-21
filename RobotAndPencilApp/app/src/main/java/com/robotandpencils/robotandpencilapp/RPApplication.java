@@ -7,9 +7,12 @@ import android.app.Application;
  */
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.robotandpencils.robotandpencilapp.services.di.RPGraphComponent;
 
 public class RPApplication extends Application {
+
     private Tracker mTracker;
+
     synchronized public Tracker getDefaultTracker() {
         if (mTracker == null) {
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
@@ -17,5 +20,19 @@ public class RPApplication extends Application {
             mTracker = analytics.newTracker(R.xml.global_tracker);
         }
         return mTracker;
+    }
+
+    private static RPGraphComponent graph;
+    private static RPApplication instance;
+
+    public void onCreate(){
+        super.onCreate();
+        instance = this;
+        buildComponentGraph();
+    }
+
+    public static RPGraphComponent component(){return graph;}
+    public static void buildComponentGraph(){
+        graph = RPGraphComponent.Initializer.init(instance);
     }
 }

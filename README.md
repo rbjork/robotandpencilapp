@@ -41,7 +41,7 @@ To make the client independent of changes to comment or annotation we will make 
 
 This app will compile, install and launch.  But it isn't actually functional since no backend is connected and the view does not support creation or rendering of comments or annotations.  The code here simply demonstrates how the spec can be implemented.  To make this fully functional would require more than the couple hours expected to be used for this assignment.
 
-Late additions include utilization of deserializing library fasterxml and google analytics for android.
+Late additions include utilization of deserializing library fasterxml, google analytics for android and Dagger2 for dependency injection.
 
 Ron
 

@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 
 import com.robotandpencils.robotandpencilapp.R;
@@ -22,7 +23,8 @@ public class ProjectNameDialog extends DialogFragment {
         public void onDialogProjectNameSave(String projectName);
     }
 
-    NoticeDialogListener mListener;;
+    NoticeDialogListener mListener;
+    EditText projectText;
 
     @Override
     public void onAttachFragment(Fragment childFragment) {
@@ -34,13 +36,16 @@ public class ProjectNameDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        mListener = (NoticeDialogListener) getActivity();
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.dialog_project,null))
+        View v = inflater.inflate(R.layout.dialog_project,null);
+        projectText = (EditText)v.findViewById(R.id.projectNameText);
+        builder.setView(v)
             .setPositiveButton(R.string.save,new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    EditText txt = (EditText) ProjectNameDialog.this.getView().findViewById(R.id.projectNameText);
-                    mListener.onDialogProjectNameSave(txt.getText().toString());
+                    ProjectNameDialog pd = ProjectNameDialog.this;
+                    mListener.onDialogProjectNameSave(projectText.getText().toString());
                 }
             })
             .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

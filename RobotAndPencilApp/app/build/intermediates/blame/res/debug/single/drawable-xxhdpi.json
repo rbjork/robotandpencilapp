@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/ronaldbjork/Documents/robotandpencilapp/RobotAndPencilApp/app/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_action_copy.png",
+        "source": "/Users/ronaldbjork/Documents/robotandpencilapp/RobotAndPencilApp/app/src/main/res/drawable-xxhdpi/ic_action_copy.png"
+    },
+    {
+        "merged": "/Users/ronaldbjork/Documents/robotandpencilapp/RobotAndPencilApp/app/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_action_save.png",
+        "source": "/Users/ronaldbjork/Documents/robotandpencilapp/RobotAndPencilApp/app/src/main/res/drawable-xxhdpi/ic_action_save.png"
+    }
+]

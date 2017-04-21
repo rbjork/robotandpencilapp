@@ -7,12 +7,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 
+import com.robotandpencils.robotandpencilapp.RPApplication;
 import com.robotandpencils.robotandpencilapp.RPViewActivity;
 import com.robotandpencils.robotandpencilapp.helpers.HelperAnnotation;
 import com.robotandpencils.robotandpencilapp.helpers.HelperComment;
 import com.robotandpencils.robotandpencilapp.model.Annotation;
 import com.robotandpencils.robotandpencilapp.model.Comment;
 import com.robotandpencils.robotandpencilapp.model.Model;
+import com.robotandpencils.robotandpencilapp.services.api.ProjectRepoService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,6 +23,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 /**
  * Created by ronaldbjork on 4/8/17.
  */
@@ -28,6 +32,12 @@ import java.util.ArrayList;
 // NOTE THAT A INTENTSERVICE HANDLER RUNS IN A SEPARATE WORKER THREAD (NOT ON UI THREAD)
 
 public class RPService extends IntentService {
+
+    @Inject
+    ProjectRepoService projectRepoService;
+
+    // Use injection
+    public RemoteStoreInterface remoteService;
 
     public static final String DATA= "data";
     public static final String ITEMS = "items";
@@ -48,8 +58,9 @@ public class RPService extends IntentService {
      * @param name Used to name the worker thread, important only for debugging.
      */
 
-    // Use injection
-    public RemoteStoreInterface remoteService;
+    public RPService(){
+        super("RPService");
+    }
 
     public RPService(String name) {
 
@@ -57,7 +68,11 @@ public class RPService extends IntentService {
         //remoteService = some_remote_storage_service;
     }
 
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        RPApplication.component().inject(this);
+    }
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -99,14 +114,14 @@ public class RPService extends IntentService {
             for (int i = 0; i < dataJSON.length(); i++) {
                 try {
                     JSONObject dataitem = (JSONObject) dataJSON.get(i);
-                    remoteService.save(accountName, password, projectname, dataitem.toString()); //  Synchronous call
+                    projectRepoService.save(accountName, password, projectname, dataitem.toString()); //  Synchronous call
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
 
         }else if(action.equals(LOAD_ACTION)){
-            String loaddata = remoteService.retrieve(accountName,password,projectname);
+            String loaddata = projectRepoService.retrieve(accountName,password,projectname);
             try {
                 JSONObject projectJSON = new JSONObject(loaddata);
 

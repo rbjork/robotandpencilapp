@@ -149,6 +149,7 @@ public class RPViewActivity extends AppCompatActivity implements ProjectNameDial
 
     @Override
     public void onDialogProjectNameSave(String projectName) {
+
         this.projectName = projectName;
     }
 
